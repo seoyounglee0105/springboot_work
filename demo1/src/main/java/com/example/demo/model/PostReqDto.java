@@ -12,7 +12,7 @@ import lombok.ToString;
 @Setter
 @ToString
 @NoArgsConstructor // 기본 생성자
-@AllArgsConstructor // 모든 멤버변수가 포함한 생성자 (몇 개만 포함하려면 직접 생성하기)
+@AllArgsConstructor // 모든 멤버변수가 포함 생성자 (몇 개만 포함하려면 직접 생성하기)
 public class PostReqDto {
 	
 	private String name;

@@ -12,16 +12,14 @@ import com.example.demo2.model.PutRequestDto;
 @RequestMapping("/api")
 public class PutApiController {
 	
-	// method : PUT
-	// http://localhost:8080/api/put1
+	// 주소 : http://localhost:8080/api/put1
 	@PutMapping("/put1")
 	public PostRequestDto put(@RequestBody PostRequestDto req) {
 		System.out.println("req : " + req);
 		return req;
 	}
 	
-	// method : PUT
-	// http://localhost:8080/api/put1
+	// 주소 : http://localhost:8080/api/put1
 	@PutMapping("/put2")
 	public PutRequestDto put2(@RequestBody PutRequestDto reqDto) {
 		System.out.println("reqDto : " + reqDto);
