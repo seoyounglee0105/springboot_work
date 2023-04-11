@@ -11,5 +11,4 @@ public class Base64Encoder implements IEncoder {
 		return resultEncode;
 	}
 	
-	
 }

@@ -11,7 +11,7 @@ public class MainTest1 {
 		// Base64Encoder  <- IEncoder로 볼 수 있음
 		// UrlEncoder <- IEncoder로 볼 수 있음
 		
-		// 하고 싶은 인코더 클래스를 주입만 하면 그 구현 클래스에 맞게 기능을 처리할 수 있다.
+		// 하고 싶은 인코더 클래스를 주입(DI)만 하면 그 구현 클래스에 맞게 기능을 처리할 수 있음
 		Encoder encoder = new Encoder(new UrlEncoder());
 		String result1 = encoder.encode(url);
 		System.out.println("result1 : " + result1);
@@ -20,13 +20,6 @@ public class MainTest1 {
 		encoder.setiEncoder(new Base64Encoder());
 		System.out.println(encoder.encode("반가워"));
 		
-//		Encoder encoder2 = new Encoder(new Base64Encoder());
-//		String result2 = encoder2.encode(url);
-//		System.out.println("result2 : " + result2);
-//		
-//		Encoder encoder3 = new Encoder(new MyEncoder());
-//		String result3 = encoder3.encode(url);
-//		System.out.println("result3 : " + result3);
 	}
 
 }
