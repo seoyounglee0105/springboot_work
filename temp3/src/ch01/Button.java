@@ -14,19 +14,16 @@ package ch01;
 
 public class Button {
 
-	private String name;
 	private IButtonListener iButtonListener;
-	
-	public Button(String name) {
-		this.name = name;
-	}
 	
 	// setter
 	public void setIButtonListener(IButtonListener iButtonListener) {
 		this.iButtonListener = iButtonListener;
 	}
 	
+	// 이벤트 메서드
 	public void click(String message) {
+		// setter 메서드로 인터페이스가 세팅되지 않았다면 이벤트 작동 X
 		if (iButtonListener != null) {
 			this.iButtonListener.clickEvent(message);
 		}

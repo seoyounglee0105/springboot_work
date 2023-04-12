@@ -15,10 +15,7 @@ import org.springframework.stereotype.Component;
 public class AopParameter {
 	
 	// 포인트 컷
-								// execution 표현식
-	// 매개변수로 role 설정  * 패키지명.controller ~
-	                       // * : 모든 접근 제어 지시자를 사용하겠다
-						   // controller 아래에 있는 모든 것들을 지켜보겠다
+	// 모든 접근 제어자, ~.controller 아래의 모든 클래스의 모든 메서드를 지켜봄
 	@Pointcut("execution(* com.example.demo4.controller..*.*(..))")
 	private void cut() {
 		
@@ -28,11 +25,12 @@ public class AopParameter {
 	// controller가 실행되면 before 메서드를 먼저 실행한 후에
 	// controller 메서드를 실행함
 	
-	// cut() 메서드가 실행되는 지점 이전에 before() 메서드를 실행
-	@Before("cut()")  // before() 메서드를 먼저 실행한 후에 cut() 메서드 실행
+	// cut() 메서드가 실행되는 지점 이전에 before() 메서드를 실행 (before() -> cut())
+	@Before("cut()")  
 	public void before(JoinPoint joinPoint) {
 		
-		// controller -> /api/get 호출하기 전에 수행되는 녀석
+		// controller -> /api/get 호출하기 전에 수행됨
+		
 		// 어떤 메서드(get, post, put, delete)가 수행되었는지 알아보는 방법
 		MethodSignature methodSignature = (MethodSignature) joinPoint.getSignature();
 		Method method = methodSignature.getMethod();
@@ -44,13 +42,10 @@ public class AopParameter {
 		Object[] args = joinPoint.getArgs();
 		for (Object obj : args) {
 			// 매개변수 타입
-			System.out.println("type : " + obj.getClass().getSimpleName()); // 리플렉션 기법 (getClass
+			System.out.println("type : " + obj.getClass().getSimpleName()); // 리플렉션 기법 (getClass)
 			// 매개변수 값
 			System.out.println("value : " + obj);
 		}
-		
-		// before 메서드 수행 시점 확인용
-		System.out.println("before 수행 완료 ----");
 	}
 	
 	// value : cut() 메서드를 돌릴 때  // returning : 리턴 타입

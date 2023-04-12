@@ -21,9 +21,7 @@ public class UserController {
 	
 	// GET 방식일 때, 파라미터 앞에 어떤 유효성 검사를 할지 지정해주어야 함
 
-	// http://localhost:8080/user?name=홍&age=1
-	// GET 방식일 때 Valid 처리
-	@GetMapping("/user") // 이름 최소 길이 2                        // not null, 최솟값 1 
+	@GetMapping("/user")                  
 	public User user(@Size(min = 2) @RequestParam String name, @NotNull @Min(1) @RequestParam Integer age) {
 		User user = new User();
 		user.setAge(age);
@@ -31,8 +29,8 @@ public class UserController {
 		return user;
 	}
 	
-	@GetMapping("/user2")
 	// object mapper를 통해서 파싱 처리하고 싶다면
+	@GetMapping("/user2")
 	public User user2(@Valid User user) {
 		
 		return user;

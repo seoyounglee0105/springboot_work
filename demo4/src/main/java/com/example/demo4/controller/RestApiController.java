@@ -25,6 +25,7 @@ public class RestApiController {
 	public ResponseEntity<User> post(@RequestBody User user) {
 		System.out.println("method : post");
 		System.out.println("user : " + user.toString());
+		
 		return ResponseEntity.status(HttpStatus.OK).body(user);
 	}
 	

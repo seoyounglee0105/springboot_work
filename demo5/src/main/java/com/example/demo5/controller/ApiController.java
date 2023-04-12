@@ -36,7 +36,7 @@ public class ApiController {
 					.age(user.getAge())
 					.phoneNumber(user.getPhoneNumber())
 					.build();
-		
+				
 		return ResponseEntity.ok(user2);
 	}
 	
@@ -49,6 +49,7 @@ public class ApiController {
 	public ResponseEntity<User> user2(@Valid @RequestBody User user) {
 		// 관점 지향 패러다임 추가
 		// AOP 기반의 Valid 라이브러리를 활용하면 공통적으로 들어가야 하는 부분의 코드를 분리시킬 수 있음
+		
 		return ResponseEntity.ok(user);
 	}
 	
@@ -56,19 +57,18 @@ public class ApiController {
 	// Validation 심화 과정
 	// BindingResult 클래스를 배워 보자.
 	
-	// BindingResult가 @Valid에 대한 결과 값을 가지고 있음
-	// 와일드 카드 : ?
-	// -> 상황에 따라 다른 타입을 리턴해야 할 때 사용할 수 있음
+	// BindingResult는 @Valid에 대한 결과 값을 가지고 있음
 	@PostMapping("/user3")
 	public ResponseEntity<?> user3(@Valid @RequestBody User user,
 			BindingResult bindingResult) {
 		
 		// 에러가 있다면
 		if (bindingResult.hasErrors()) {
-			// 응답 HTTP 메시지 BODY에 보낼 문자열
+			// 응답 HTTP 메시지 body에 보낼 문자열
 			StringBuilder sb = new StringBuilder();
 			
 			// 모든 에러를 담은 리스트 (스트림 연산 활용)
+			// forEach()는 .stream()을 생략해도 정상 작동함
 			bindingResult.getAllErrors().forEach(error -> {
 				// 에러가 발생한 필드 확인
 				System.out.println(error.getCode());
@@ -79,8 +79,6 @@ public class ApiController {
 				// 에러가 발생한 객체명 확인
 				System.out.println(error.getObjectName());
 				
-				// customError <- 이런 식의 DTO를 만들어서
-				// DTO 형식으로 에러 관련 정보를 보낼 수도 있음
 				sb.append("field : " + error.getCode()); // 에러가 발생한 필드
 				sb.append("\n");
 				sb.append("message : " + error.getDefaultMessage()); // 에러 시 메세지
@@ -91,9 +89,7 @@ public class ApiController {
 		}
 		
 		// 에러가 없다면
-		
 		return ResponseEntity.ok(user);
 	}
-	
 	
 }
