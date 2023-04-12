@@ -20,6 +20,12 @@ import com.example.demo6.dto.User;
 @RestController
 @RequestMapping("/api")
 public class ApiController {
+	
+	@GetMapping("/test")
+	public String test() {
+		
+		return "TEST ";
+	}
 
 	@GetMapping("/user")
 	public User get(@NotEmpty @Size(min = 1, max = 10) @RequestParam String name, @NotNull @Min(1) @RequestParam Integer age) {
