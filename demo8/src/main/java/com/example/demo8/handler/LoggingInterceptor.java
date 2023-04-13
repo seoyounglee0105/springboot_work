@@ -15,7 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
  *
  */
 
-@Component
+@Component // DI를 사용하기 위해 bean으로 등록
 public class LoggingInterceptor implements HandlerInterceptor {
 
 	// 컨트롤러 전에

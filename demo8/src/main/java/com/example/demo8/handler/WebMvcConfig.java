@@ -12,7 +12,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
  *
  */
 
-@Configuration // 1개 이상의 객체를 bean으로 등록해야 할 때 (WebMvcConfig, LoggingInterceptor)
+@Configuration // 1개 이상의 객체를 bean으로 등록해야 할 때
 public class WebMvcConfig implements WebMvcConfigurer {
 	
 	// DI를 사용하는 코드로 변경해보자.
