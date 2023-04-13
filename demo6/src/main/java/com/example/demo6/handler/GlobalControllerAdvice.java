@@ -33,42 +33,23 @@ public class GlobalControllerAdvice {
 	// 특정 예외를 잡아서 다르게 응답 처리하고 싶다면
 	@ExceptionHandler(value = MethodArgumentNotValidException.class)
 	public ResponseEntity<?> methodArgumentNotValidException(MethodArgumentNotValidException e) { 
-		
-		StringBuilder sb = new StringBuilder();
-	
-//		e.getAllErrors().forEach(error -> {
-//			String[] errCodes = error.getCodes()[1].toString().split("\\.");
-//			System.out.println("유효성 검사 : " + errCodes[0]);
-//			System.out.println("잘못된 파라미터 : " + errCodes[1]);
-//			System.out.println(error.getDefaultMessage());
-//			System.out.println("------------------------------------");
-//			
-//			sb.append("유효성 검사 : " + errCodes[0]);
-//			sb.append("\n");
-//			sb.append("잘못된 파라미터 : " + errCodes[1]);
-//			sb.append("\n");
-//			sb.append(error.getDefaultMessage());
-//			sb.append("\n");
-//			sb.append("----------------------------------------------\n");
-//		});
 
 		List<CustomError> errorList = new ArrayList<>();
 		
 		e.getAllErrors().forEach(error -> {
+			// 에러가 발생한 파라미터
+			String parameter = error.getCodes()[1].toString().split("\\.")[1];
+			// 에러가 발생한 필드 (여기서는 유효성 검사에 걸린 제약조건)
 			String field = error.getCode();
+			// 에러 발생 시 메세지
 			String message = error.getDefaultMessage();
 			
 			CustomError customError = new CustomError();
+			customError.setParameter(parameter);
 			customError.setField(field);
 			customError.setMessage(message);
 			errorList.add(customError);
 		});
-		
-		// 디버깅을 해보고
-		// 어떤 필드가 잘못되었는지, 메세지가 무엇인지
-		// String 값으로 재정의해서 응답처리해주세요.
-		
-		System.out.println("잘못된 값을 나에게 전달했어");
 		                                      // 400
 		return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorList);
 	}

@@ -1,13 +1,13 @@
 server:
-  port: 8080
+  port: 8080  # 포트 번호
   servlet: 
     encoding: 
-      charset: utf-8
+      charset: utf-8  # 인코딩 표준
       force: true
       
 # 스프링 JSP 사용 설정
 spring: 
   mvc: 
     view: 
-      prefix: /WEB-INF/view/ 
-      suffix: .jsp
+      prefix: /WEB-INF/view/  # jsp 파일 경로
+      suffix: .jsp  # 확장자
