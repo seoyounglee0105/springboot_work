@@ -18,14 +18,18 @@ public class AuthInterceptor implements HandlerInterceptor {
 		
 		// 세션 여부 확인
 		HttpSession session = request.getSession();
-		Object principal = session.getAttribute("principal");
+		Object user = session.getAttribute("user");
 		
-		if (principal == null) {
+		System.out.println("Request URI : " + request.getRequestURI()); // 요청 URI
+		System.out.println("Request Method : " + request.getMethod()); // REST API Method
+		
+		if (user == null) {
 			// System.out.println("미인증 사용자");
 			response.sendRedirect("/loginPage");
 			return false;
 		}
-		
+		// true면 컨트롤러로 보냄
+		// false면 컨트롤러로 보내지 않음
 		return true;
 	}
 	

@@ -32,21 +32,4 @@ public class LoggingInterceptor implements HandlerInterceptor {
 		return true;
 	}
 	
-	// 컨트롤러 후에
-	@Override
-	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
-			ModelAndView modelAndView) throws Exception {
-		
-//		System.out.println("postHandle 호출");
-		HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
-	}
-	
-	@Override
-	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex)
-			throws Exception {
-		
-//		System.out.println("afterCompletion 호출");
-		HandlerInterceptor.super.afterCompletion(request, response, handler, ex);
-	}
-	
 }

@@ -12,6 +12,7 @@ public class blogController {
 
 	@GetMapping({"/", "blog"})
 	public String blogPage(Model model, @RequestParam(required = false, defaultValue = "0") String menu) {
+		// DB로 연결하는 방식으로 할 때에는 여기서 행 개수, 페이지 개수, 열 개수 계산
 		int postCount = 0;
 		int rowCount = 0;
 		int colCount = 0;

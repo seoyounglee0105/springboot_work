@@ -7,140 +7,10 @@
 <meta charset="UTF-8">
 <title>Green's Blog</title>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+<link rel = "stylesheet" href = "css/main.css">
 <style>
-	@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100;700&display=swap');
-	* {
-		margin: 0;
-		padding: 0;
-		box-sizing: border-box;
-		font-family: 'Noto Sans KR', sans-serif;
-	}
 	
-	li {
-		list-style: none;
-	}
-	
-	a {
-		text-decoration: none;
-	}
-	
-	body {
-		display: flex;
-		justify-content: center;
-	}
-	
-	.page-container {	
-		width: 1000px;
-		margin: 10px 0px;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-
-	header {
-		background-color: #c3dfd8;
-		border: 1px solid gray;
-		margin-bottom: 18px;
-	}
-	
-	header h1 {
-		margin: 2px 0px 10px 8px;
-	}
-
-	.main-container {
-		display: flex;
-		justify-content: space-around;
-		align-items: flex-start;
-	}
-	
-	nav {
-		flex-shrink: 0;
-		flex-basis: 170px;
-		border: 2px solid #9f9f9f;
-		border-radius: 10px;
-		padding: 8px;
-		color: #9f9f9f;
-	}
-	
-	.nav-top {
-		display: flex;
-		justify-content: space-between;
-	}
-	
-	nav h4 {
-		margin-bottom: 13px;
-	}
-	
-	nav h4 a {
-		color: #9f9f9f;	
-	}
-	
-	nav ul li a {
-		font-weight: 600;
-		font-size: 14px;
-		color: #9f9f9f;
-	}
-	
-	main {
-		flex-shrink: 0;
-		flex-basis: 730px;
-	}
-	
-	.main-top {
-		display: flex;
-		justify-content: space-between;
-		margin-bottom: 25px;
-	}
-	
-	.main-content {
-		width: 750px;
-	}
-	
-	.content-row {
-		display: flex;
-		justify-content: flex-start;
-	}
-	
-	.content-row img {
-		width: 165px;
-		height: 165px;
-	}
-	
-	.post {
-		margin-bottom: 10px;
-		margin-right: 23px;
-	}
-	
-	.post-title {
-		font-weight: 600;
-		margin-bottom: 10px;
-	}
-	
-	.main-bottom ul {
-		display: flex;
-		justify-content: center;
-	}
-	
-	.main-bottom ul li {
-		margin: 10px 10px;
-	}
-	
-	.main-bottom ul li a {
-		font-weight: 600;
-		color: black;
-	}
-	
-	.main-container nav ul li a:hover {
-		color: black;
-	}
-	
-	.nav-top h4 a:hover {
-		color: black !important;
-	}	
-	
-	<% String menu = (String) request.getAttribute("menu");
-		System.out.println(menu);
-	%>
+	<% String menu = (String) request.getAttribute("menu"); %>
 	
 	<% if ("1".equals(menu)) { %>
 		.main-container nav ul li:nth-of-type(1) a {
@@ -269,15 +139,15 @@
 					<c:choose>
 						<%-- 행 수가 4개 이하라면 --%>
 						<c:when test="${rowCount <= 4}">
-							<c:forEach var="j" begin="1" end="${rowCount}" step="1" >
+							<c:forEach var="j" begin="0" end="${rowCount - 1}" step="1" >
 								<div class = "content-row">
 									<c:choose>
 										<%-- 포스트 개수가 4의 배수라면 --%>
 										<c:when test="${colCount == 0}">
 											<c:forEach var="i" begin="1" end="4" step="1" >
 												<div class="post">
-													<img src="images/1.jpg">	
-													<p class="post-title">제목 ${i}</p>
+													<img src="images/${j * 4 + i}.jpg">	
+													<p class="post-title">제목 ${j * 4 + i}</p>
 													<p class="post-date">2023.04.12.</p>			
 												</div>												
 											</c:forEach>
@@ -286,11 +156,11 @@
 										<c:otherwise>
 											<c:choose>
 												<%-- 마지막 행이 아니라면 --%>
-												<c:when test="${j < rowCount}">
+												<c:when test="${j < rowCount - 1}">
 													<c:forEach var="i" begin="1" end="4" step="1" >
 														<div class="post">
-															<img src="images/1.jpg">	
-															<p class="post-title">제목 ${i}</p>
+															<img src="images/${j * 4 + i}.jpg">	
+															<p class="post-title">제목 ${j * 4 + i}</p>
 															<p class="post-date">2023.04.12.</p>			
 														</div>												
 													</c:forEach>
@@ -299,8 +169,8 @@
 												<c:otherwise>
 													<c:forEach var="i" begin="1" end="${colCount}" step="1" >
 														<div class="post">
-															<img src="images/1.jpg">	
-															<p class="post-title">제목 ${i}</p>
+															<img src="images/${j * 4 + i}.jpg">	
+															<p class="post-title">제목 ${j * 4 + i}</p>
 															<p class="post-date">2023.04.12.</p>			
 														</div>												
 													</c:forEach>
@@ -314,12 +184,12 @@
 						</c:when>
 						<%-- 행 수가 4개보다 많다면 --%>
 						<c:otherwise>
-							<c:forEach var="j" begin="1" end="4" step="1" >
+							<c:forEach var="j" begin="0" end="3" step="1" >
 								<div class = "content-row">
 									<c:forEach var="i" begin="1" end="4" step="1" >
 										<div class="post">
-											<img src="images/1.jpg">	
-											<p class="post-title">제목 ${i}</p>
+											<img src="images/${j * 4 + i}.jpg">	
+											<p class="post-title">제목 ${j * 4 + i}</p>
 											<p class="post-date">2023.04.12.</p>			
 										</div>												
 									</c:forEach>
@@ -332,10 +202,21 @@
 				<div class = "main-bottom">
 					<%-- 페이지 번호 --%>
 					<ul>
-						<c:forEach var="i" begin="1" end="${pageCount}" step="1">
-							<li><a href="#">${i}</a>						
-						</c:forEach>
-						<li><a href="#">다음 ></a>
+						<c:choose>
+							<%-- 페이지 수가 10 이하라면 --%>
+							<c:when test="${pageCount <= 10}">
+								<c:forEach var="i" begin="1" end="${pageCount}" step="1">
+									<li><a href="#">${i}</a>						
+								</c:forEach>							
+							</c:when>
+							<%-- 페이지 수가 11 이상이라면 --%>
+							<c:otherwise>															
+								<c:forEach var="i" begin="1" end="10" step="1">
+									<li><a href="#">${i}</a>						
+								</c:forEach>							
+								<li><a href="#">다음 ></a>						
+							</c:otherwise>
+						</c:choose>
 					</ul>
 				</div>
 			</main>
