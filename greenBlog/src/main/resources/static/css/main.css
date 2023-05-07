@@ -14,12 +14,12 @@ a {
 	text-decoration: none;
 }
 
-body {
+.all--container {
 	display: flex;
 	justify-content: center;
 }
 
-.page-container {	
+.page--container {	
 	width: 1000px;
 	margin: 10px 0px;
 	display: flex;
@@ -28,16 +28,29 @@ body {
 }
 
 header {
-	background-color: #c3dfd8;
-	border: 1px solid gray;
+	background-image: url('/images/img.jpg');
+	border: 1px solid rgba(0, 0, 0, 0.1);
 	margin-bottom: 18px;
+	height: 63px;
+	display: flex;
+	justify-content: space-between;
+}
+
+header div:first-of-type {
+	display: flex;
+	align-items: flex-start;
 }
 
 header h1 {
 	margin: 2px 0px 10px 8px;
+	font-weight: 600;
 }
 
-.main-container {
+header div:first-of-type div {
+	padding: 5px 0 0 5px;
+}
+
+.main--container {
 	display: flex;
 	justify-content: space-around;
 	align-items: flex-start;
@@ -52,16 +65,17 @@ nav {
 	color: #9f9f9f;
 }
 
-.nav-top {
+.nav--top {
 	display: flex;
 	justify-content: space-between;
 }
 
-nav h4 {
+nav h5 {
 	margin-bottom: 13px;
+	font-weight: 600;
 }
 
-nav h4 a {
+nav h5 a {
 	color: #9f9f9f;	
 }
 
@@ -76,54 +90,140 @@ main {
 	flex-basis: 730px;
 }
 
-.main-top {
+.main--top {
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 25px;
 }
 
-.main-content {
+.main--top h5 {
+	font-weight: 600;
+}
+
+.main--content {
 	width: 750px;
 }
 
-.content-row {
+.content--row {
 	display: flex;
 	justify-content: flex-start;
 }
 
-.content-row img {
+.content--row img {
 	width: 165px;
 	height: 165px;
 }
 
 .post {
-	margin-bottom: 10px;
+	margin-bottom: 20px;
 	margin-right: 23px;
 }
 
-.post-title {
+.post--title {
 	font-weight: 600;
-	margin-bottom: 10px;
+	margin: 5px 0 10px;
 }
 
-.main-bottom ul {
+.main--bottom ul {
 	display: flex;
 	justify-content: center;
 }
 
-.main-bottom ul li {
+.main--bottom ul li {
 	margin: 10px 10px;
 }
 
-.main-bottom ul li a {
+.main--bottom ul li a {
 	font-weight: 600;
 	color: black;
 }
 
-.main-container nav ul li a:hover {
+.main--container nav ul li a:hover {
 	color: black;
 }
 
-.nav-top h4 a:hover {
+.nav--top h4 a:hover {
 	color: black !important;
 }	
+
+.btn--gray {
+	background-color: #ccc;
+	color: gray;
+	width: 150px;
+	height: 35px;
+	margin: 0 10px !important;
+	border: none;
+	border-radius: 8px;
+	
+}
+
+.btn--mint {
+	background-color: #5ae4cc;
+	color: white;
+	width: 150px;
+	height: 35px;
+	margin: 0 10px !important;
+	border: none;
+	border-radius: 8px;
+}
+
+.btn--small {
+	width: 100px !important;
+	height: 30px !important;
+	font-size: 14px;
+	margin: 0 !important;
+}
+
+.btn--label {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.header--modal > form > div:first-of-type > div {
+	padding: 20px !important;
+	width: 550px !important;
+}
+
+.header--modal table {
+	width: 100%;
+}
+
+.header--modal table th {
+	padding-right: 20px;
+}
+
+.header--modal table td {
+	width: 330px;
+}
+
+.modal-footer {
+	justify-content: center !important;
+	border: none !important;
+}
+
+.url--text {
+	color: #ccc;
+}
+
+.url--input {
+	width: 100%;
+	padding-left: 202px;
+	
+}
+
+.annotation--td {
+	padding-bottom: 20px;
+	font-size: 13px;
+	color: gray;
+	
+}
+
+.background--td {
+	display: flex;
+	justify-content: space-between;
+}
+
+.file--name {
+	width: 215px;
+}
